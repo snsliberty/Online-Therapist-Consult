@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get free health consultation from certified professionals. Submit your health details and get personalized advice via WhatsApp.">
+    <meta name="keywords" content="free health consultation, medical advice, online doctor, health assessment">
+    <meta name="author" content="HealthCare Consultants">
+    <title>Free Health Consultation | Get Personalized Medical Advice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --danger: #ef4444;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .logo i {
+            font-size: 2.8rem;
+            color: var(--primary);
+        }
+        
+        .logo h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .form-container {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+        }
+        
+        .info-container {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            color: white;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .form-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .info-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .info-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: white;
+            border-radius: 2px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .required::after {
+            content: ' *';
+            color: var(--danger);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+        }
+        
+        .treatment-details {
+            display: none;
+            margin-top: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn i {
+            margin-right: 10px;
+        }
+        
+        .benefits-list {
+            list-style-type: none;
+            margin-top: 25px;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+        }
+        
+        .benefits-list li i {
+            position: absolute;
+            left: 0;
+            top: 3px;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .contact-info {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .whatsapp-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25d366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-contact:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(18, 140, 126, 0.3);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--light-gray);
+            margin-top: 20px;
+        }
+        
+        .testimonial {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+            text-align: right;
+        }
+        
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .logo h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+        }
+        
+        .error {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <h1>Navnaaz Health And Wellness</h1>
+            </div>
+            <p class="tagline">Get personalized health advice from certified professionals. Free consultation via WhatsApp.</p>
+        </header>
+        
+        <div class="content-wrapper">
+            <div class="form-container">
+                <h2 class="form-title">Health Consultation Form</h2>
+                <form id="consultationForm">
+                    <div class="form-group">
+                        <label for="name" class="required">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        <div class="error" id="nameError">Please enter your name</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mobile" class="required">Mobile Number</label>
+                        <input type="tel" id="mobile" name="mobile" placeholder="Enter your 10-digit mobile number" required>
+                        <div class="error" id="mobileError">Please enter a valid 10-digit mobile number</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address" class="required">Address</label>
+                        <textarea id="address" name="address" placeholder="Enter your full address" required></textarea>
+                        <div class="error" id="addressError">Please enter your address</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="healthCondition">Health Condition</label>
+                        <textarea id="healthCondition" name="healthCondition" placeholder="Describe your health concerns or condition"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" placeholder="Enter your age" min="1" max="120">
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="dual-inputs">
+                            <div style="display: flex; gap: 15px;">
+                                <div style="flex: 1;">
+                                    <label for="weight">Weight (kg)</label>
+                                    <input type="number" id="weight" name="weight" placeholder="Weight in kg">
+                                </div>
+                                <div style="flex: 1;">
+                                    <label for="height">Height (cm)</label>
+                                    <input type="number" id="height" name="height" placeholder="Height in cm">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hobby">Hobbies/Activities</label>
+                        <input type="text" id="hobby" name="hobby" placeholder="Your hobbies or daily activities">
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="treatment" name="treatment">
+                            <label for="treatment">Are you currently undergoing any treatment?</label>
+                        </div>
+                        <div class="treatment-details" id="treatmentDetails">
+                            <label for="treatmentInfo">Treatment Details</label>
+                            <textarea id="treatmentInfo" name="treatmentInfo" placeholder="Please provide details about your current treatment"></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn">
+                        <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                    </button>
+                </form>
+            </div>
+            
+            <div class="info-container">
+                <h2 class="info-title">Why Choose Us?</h2>
+                <p>Get professional health advice from certified doctors and healthcare professionals at no cost.</p>
+                
+                <ul class="benefits-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Free Consultation</strong> - No hidden charges or fees
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Certified Professionals</strong> - Experienced doctors and specialists
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Personalized Advice</strong> - Tailored to your health profile
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Quick Response</strong> - Get advice within 24 hours
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Privacy Protected</strong> - Your information is secure
+                    </li>
+                </ul>
+                
+                <div class="testimonial">
+                    <p>"The free consultation helped me understand my condition better. The doctor was very patient and explained everything clearly."</p>
+                    <div class="testimonial-author">- Mr.S N Sunderi, Bhatkal, Karnataka</div>
+                </div>
+                
+                <div class="contact-info">
+                    <p><i class="fas fa-info-circle"></i> After submitting the form, you'll be redirected to WhatsApp to complete the consultation process.</p>
+                    <p><i class="fas fa-headset"></i> Our team is available Monday-Saturday, 9AM-8PM</p>
+                    <a href="https://wa.me/919019326836" class="whatsapp-contact" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat directly on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 HealthCare Consult. All rights reserved.</p>
+            <p>Disclaimer: This service provides general health advice. For medical emergencies, contact your nearest healthcare facility.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('consultationForm');
+            const treatmentCheckbox = document.getElementById('treatment');
+            const treatmentDetails = document.getElementById('treatmentDetails');
+            
+            // Toggle treatment details
+            treatmentCheckbox.addEventListener('change', function() {
+                treatmentDetails.style.display = this.checked ? 'block' : 'none';
+            });
+            
+            // Mobile validation
+            const mobileInput = document.getElementById('mobile');
+            mobileInput.addEventListener('input', function() {
+                this.value = this.value.replace(/\D/g, '').slice(0, 10);
+            });
+            
+            // Form validation and submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let valid = true;
+                
+                // Reset errors
+                document.querySelectorAll('.error').forEach(el => {
+                    el.style.display = 'none';
+                });
+                
+                // Name validation
+                if (!form.name.value.trim()) {
+                    document.getElementById('nameError').style.display = 'block';
+                    valid = false;
+                }
+                
+                // Mobile validation
+                if (!form.mobile.value.trim() || form.mobile.value.length !== 10) {
+                    document.getElementById('mobileError').style.display = 'block';
+                    valid = false;
+                }
+                
+                // Address validation
+                if (!form.address.value.trim()) {
+                    document.getElementById('addressError').style.display = 'block';
+                    valid = false;
+                }
+                
+                if (!valid) return;
+                
+                // Prepare WhatsApp message
+                const message = `*Health Consultation Request*%0A%0A` +
+                    `*Name:* ${form.name.value}%0A` +
+                    `*Mobile:* ${form.mobile.value}%0A` +
+                    `*Address:* ${form.address.value}%0A` +
+                    `*Health Condition:* ${form.healthCondition.value || 'Not provided'}%0A` +
+                    `*Age:* ${form.age.value || 'Not provided'}%0A` +
+                    `*Weight:* ${form.weight.value ? form.weight.value + ' kg' : 'Not provided'}%0A` +
+                    `*Height:* ${form.height.value ? form.height.value + ' cm' : 'Not provided'}%0A` +
+                    `*Hobbies:* ${form.hobby.value || 'Not provided'}%0A` +
+                    `*Current Treatment:* ${treatmentCheckbox.checked ? 'Yes' : 'No'}%0A` +
+                    (treatmentCheckbox.checked ? `*Treatment Details:* ${form.treatmentInfo.value || 'Not provided'}%0A` : '');
+                
+                // Redirect to WhatsApp
+                window.location.href = `https://wa.me/919019326836?text=${message}`;
+            });
+        });
+    </script>
+</body>
+</html>
